@@ -4,31 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%- title %></title>
+
+    <!-- ===== BOX ICONS ===== -->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Material Design Icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Two+Tone|Material+Icons+Sharp">
+
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="/css/styles.css">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
+
 </head>
 
-<body>
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header__toggle">
+            <i class='bx bx-menu' id="header-toggle"></i>
+        </div>
 
-    <div class="wrapper">
+    </header>
 
-        <%- include('./sidebar.ejs') %>
-        <main><%- body %></main>
-        <%- include('../partials/footer.ejs') %>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div>
+                <a href="#" class="nav__logo">
+                    <!-- <i class='bx bx-layer nav__logo-icon'></i>
+                    <span class="nav__logo-name">Bedimcode</span> -->
+                </a>
+
+                <div class="nav__list">
+                    <a href="/" class="nav__link ">
+                        <!-- <span class="material-icons material-icons-round">dashboard</span> -->
+                        <!-- <i class='bx bx-grid-alt nav__icon'></i> -->
+                        <span class="material-icons">search</span>
+                        <span class="nav__name">Diagnosa</span>
+                    </a>
+
+
+                    <a href="/daftar-gejala" class="nav__link">
+                        <!-- <i class='bx bx-message-square-detail nav__icon'></i> -->
+                        <span class="material-icons material-icons-round">view_list</span>
+                        <span class="nav__name">Daftar Gejala</span>
+                    </a>
+
+                    <a href="#" class="nav__link">
+                        <!-- <i class='bx bx-message-square-detail nav__icon'></i> -->
+                        <span class="material-icons material-icons-round">view_list</span>
+                        <span class="nav__name">Daftar Masalah</span>
+                    </a>
+
+                    <a href="/daftar-diagnosa" class="nav__link">
+                        <!-- <i class='bx bx-folder nav__icon'></i> -->
+                        <span class="material-icons material-icons-round">folder_open</span>
+                        <span class="nav__name">Data Diagnosa</span>
+                    </a>
+
+                    <a href="/info" class="nav__link">
+                        <!-- <i class='bx bx-folder nav__icon'></i> -->
+                        <span class="material-icons material-icons-round">info</span>
+                        <span class="nav__name">Info</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
     </div>
 
+    <%- include('./sidebar.ejs') %>
+    <div class="wrapper">
+        <main><%- body %></main>
+        <!-- <%- include('../partials/footer.ejs') %> -->
+    </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-        crossorigin="anonymous"></script>
+    <!--===== MAIN JS =====-->
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

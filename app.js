@@ -38,7 +38,7 @@ connection.connect(err => {
 
 
 app.get('/', function (req, res) {
-    res.render('add-or-edit.ejs', { title: "Home", heading: "Home" });
+    res.render('add-or-edit.ejs', { title: "Home", heading: "Home", button_value: "Diagnosa" });
 });
 
 
