@@ -38,7 +38,7 @@ connection.connect(err => {
 
 
 app.get('/', function (req, res) {
-    res.render('add-or-edit.ejs', { title: "Home", heading: "Home", button_value: "Diagnosa" });
+    res.render('add-or-edit.ejs', { title: "Home", heading: "Pilih Gejala", button_value: "Diagnosa" });
 });
 
 
@@ -61,13 +61,19 @@ app.post('/', (req, res) => {
 
 app.get("/daftar-gejala", (req, res) => {
     connection.query("SELECT * FROM daftar_gejala", (error, results) => {
-        res.render("symptom-list.ejs", { title: "Daftar Gejala", heading: "Daftar Gejala", daftar_gejala: results });
+        res.render("daftar-gejala.ejs", { title: "Daftar Gejala", heading: "Daftar Gejala", daftar_gejala: results });
     });
 });
 
 app.get("/daftar-diagnosa", (req, res) => {
     connection.query("SELECT * FROM hasil", (error, results) => {
-        res.render("diagnosis-list.ejs", { title: "Daftar Diagnosa", heading: "Daftar Diagnosa", hasil: results });
+        res.render("daftar-diagnosa.ejs", { title: "Daftar Diagnosa", heading: "Daftar Diagnosa", hasil: results });
+    })
+});
+
+app.get("/daftar-masalah", (req, res) => {
+    connection.query("SELECT * FROM daftar_masalah", (error, results) => {
+        res.render("daftar-masalah.ejs", { title: "Daftar Masalah", heading: "Daftar Masalah", daftar_masalah: results });
     })
 });
 

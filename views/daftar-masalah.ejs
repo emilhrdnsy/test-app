@@ -1,0 +1,30 @@
+<br>
+<h3>
+    <center><%= heading %></center>
+</h3>
+<br>
+
+<div class="table-responsive-sm table-hover">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" class="header-center">Kode</th>
+                <th scope="col" class="header-center">Masalah</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% daftar_masalah.forEach((problem_list) => { %>
+            <tr>
+                <div class="item-data">
+                    <th scope="row">
+                        <center><span class="code-column"><%= problem_list.Kode %></span></center>
+                    </th>
+                    <td>
+                        <span class="name-column"><%= problem_list.Masalah %></span>
+                    </td>
+                </div>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

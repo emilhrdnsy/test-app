@@ -189,6 +189,9 @@ table {
 .bx-menu {
     color: rgb(0, 123, 255);
 }
+.diagnosis-btn {
+    width: 100%;
+}
 
 
 /* ===== MEDIA QUERIES=====*/
@@ -266,7 +269,4 @@ table {
         width: 50%;
     }
 
-    .diagnosis {
-        width: 100%;
-    }
 }
