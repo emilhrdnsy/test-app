@@ -22,7 +22,8 @@
                     <div class="item-data">
                         <td scope="row">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="gejala<%- symptom.id_gejala %>">
+                                <input type="checkbox" class="custom-control-input" id="gejala<%- symptom.id_gejala %>"
+                                    name="gejala[]" value="gejala<%- symptom.id_gejala %>">
                                 <label class="custom-control-label" for="gejala<%- symptom.id_gejala %>">
                                     <%= symptom.nama_gejala %>
                                 </label>
@@ -36,12 +37,5 @@
     </div>
     <button type="submit" class="btn btn-primary diagnosis-btn"><%= button_value %></button>
 
-    <% - include('./partial/crud.js') %>
-    <script src="">
-        // group kemungkinan terdapat masalah
-        let groupKemungkinanMasalah = getGroupPengetahuan.toString();
 
-        // menampilkan kode gejala yang di pilih
-        let sql = 
-    </script>
 </form>

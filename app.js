@@ -56,7 +56,7 @@ app.get('/', function (req, res) {
 // app.post('/', (req, res) => {
 //     connection.query('INSERT INTO hasil (Nama_Siswa, Masalah, Nilai_CF, Solusi) VALUES (?)', [('" + req.body.name + "', '" + req.body.problem + "', '" + req.body.value + "', '" + req.body.solution + "')], (error, results) => {
 //         connection.query('SELECT * FROM hasil', (error, results) => {
-//             res.render('diagnosis-list.ejs', { title: "Hasil", heading: "Hasil", hasil: results });
+//             res.render('hasil.ejs', { title: "Hasil", heading: "Hasil", hasil: results });
 //         })
 //     })
 // });
