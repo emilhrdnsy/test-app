@@ -16,20 +16,20 @@
             </tr>
         </thead>
         <tbody>
-            <% daftar_gejala.forEach((symptom_list) => { %>
+            <% gejala.forEach((symptom_list) => { %>
             <tr>
                 <div class="item-data">
                     <th scope="row">
-                        <center><span class="code-column"><%= symptom_list.Kode %></span></center>
+                        <center><span class="code-column"><%= symptom_list.kode %></span></center>
                     </th>
                     <td>
-                        <span class="name-column"><%= symptom_list.Gejala %></span>
+                        <span class="name-column"><%= symptom_list.nama_gejala %></span>
                     </td>
                     <td>
-                        <center><span class="mb-column"><%= symptom_list.MB %></span></center>
+                        <center><span class="mb-column"><%= symptom_list.mb %></span></center>
                     </td>
                     <td>
-                        <center><span class="md-column"><%= symptom_list.MD %></span></center>
+                        <center><span class="md-column"><%= symptom_list.md %></span></center>
                     </td>
                 </div>
             </tr>

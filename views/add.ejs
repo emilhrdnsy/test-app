@@ -1,0 +1,47 @@
+<br>
+<h3>
+    <center><%= heading %></center>
+</h3>
+<br>
+
+<form action="/" method="post">
+    <!-- <div class="form-group">
+        <label for="nama">Nama Siswa</label>
+        <input type="text" class="form-control" id="nama">
+    </div> -->
+    <div class="table-responsive-sm table-hover">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col" class="header-center">Gejala</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% gejala.forEach((symptom) => { %>
+                <tr>
+                    <div class="item-data">
+                        <td scope="row">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="gejala<%- symptom.id_gejala %>">
+                                <label class="custom-control-label" for="gejala<%- symptom.id_gejala %>">
+                                    <%= symptom.nama_gejala %>
+                                </label>
+                            </div>
+                        </td>
+                    </div>
+                </tr>
+                <%})%>
+            </tbody>
+        </table>
+    </div>
+    <button type="submit" class="btn btn-primary diagnosis-btn"><%= button_value %></button>
+
+    <% - include('./partial/crud.js') %>
+    <script src="">
+        // group kemungkinan terdapat masalah
+        let groupKemungkinanMasalah = getGroupPengetahuan.toString();
+
+        // menampilkan kode gejala yang di pilih
+        let sql = 
+    </script>
+</form>

@@ -142,7 +142,6 @@ table {
 .counterCell:before {              
     content: counter(tableCount); 
     counter-increment: tableCount; 
-
 }
 
 .center {

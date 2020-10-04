@@ -4,6 +4,22 @@
 </h3>
 <br>
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 style="text-align: center;">Sistem Pakar Metode CF (Certainty Factor)</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            
+        </div>
+    </div>
+</div>
+
 <h4>Nama Siswa: <%= hasil.Nama_Siswa %> </h4>
 <br>
 <h5>Gejala yang dipilih</h5>
@@ -17,14 +33,10 @@
             <th scope="col" class="header-center"></th>
         </tr>
     </thead>
-    <!-- <tbody>
-        <% hasil.forEach((result) => { %>
-        <% let i = 1 %>
+    <tbody>
+        <% daftar_gejala.forEach((result) => { %>
         <tr>
             <div class="item-data">
-                <th scope="row">
-                    <center><span class="code-column"><%= i %></span></center>
-                </th>
                 <td>
                     <center><span class="mb-column"><%= result.Masalah %></span></center>
                 </td>
@@ -38,5 +50,5 @@
             <% i++ %>
         </tr>
         <% }); %>
-    </tbody> -->
+    </tbody>
 </table>

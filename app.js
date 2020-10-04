@@ -38,7 +38,9 @@ connection.connect(err => {
 
 
 app.get('/', function (req, res) {
-    res.render('add-or-edit.ejs', { title: "Home", heading: "Pilih Gejala", button_value: "Diagnosa" });
+    connection.query("SELECT * FROM gejala", (error, results) => {
+        res.render('add.ejs', { title: "Home", heading: "Pilih Gejala", button_value: "Diagnosa", gejala: results });
+    });
 });
 
 
@@ -51,17 +53,17 @@ app.get('/', function (req, res) {
 //     res.render('result.ejs', { title: "Hasil", heading: "Hasil" });
 // });
 
-app.post('/', (req, res) => {
-    connection.query('INSERT INTO hasil (Nama_Siswa, Masalah, Nilai_CF, Solusi) VALUES (?)', [('" + req.body.name + "', '" + req.body.problem + "', '" + req.body.value + "', '" + req.body.solution + "')], (error, results) => {
-        connection.query('SELECT * FROM hasil', (error, results) => {
-            res.render('diagnosis-list.ejs', { title: "Hasil", heading: "Hasil", hasil: results });
-        })
-    })
-});
+// app.post('/', (req, res) => {
+//     connection.query('INSERT INTO hasil (Nama_Siswa, Masalah, Nilai_CF, Solusi) VALUES (?)', [('" + req.body.name + "', '" + req.body.problem + "', '" + req.body.value + "', '" + req.body.solution + "')], (error, results) => {
+//         connection.query('SELECT * FROM hasil', (error, results) => {
+//             res.render('diagnosis-list.ejs', { title: "Hasil", heading: "Hasil", hasil: results });
+//         })
+//     })
+// });
 
 app.get("/daftar-gejala", (req, res) => {
-    connection.query("SELECT * FROM daftar_gejala", (error, results) => {
-        res.render("daftar-gejala.ejs", { title: "Daftar Gejala", heading: "Daftar Gejala", daftar_gejala: results });
+    connection.query("SELECT * FROM gejala", (error, results) => {
+        res.render("gejala.ejs", { title: "Daftar Gejala", heading: "Daftar Gejala", gejala: results });
     });
 });
 
@@ -72,8 +74,8 @@ app.get("/daftar-diagnosa", (req, res) => {
 });
 
 app.get("/daftar-masalah", (req, res) => {
-    connection.query("SELECT * FROM daftar_masalah", (error, results) => {
-        res.render("daftar-masalah.ejs", { title: "Daftar Masalah", heading: "Daftar Masalah", daftar_masalah: results });
+    connection.query("SELECT * FROM masalah", (error, results) => {
+        res.render("masalah.ejs", { title: "Daftar Masalah", heading: "Daftar Masalah", masalah: results });
     })
 });
 
