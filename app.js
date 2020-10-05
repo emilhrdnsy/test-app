@@ -23,7 +23,7 @@ const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "diagnosisdb"
+    database: "diagnosis"
 });
 
 
@@ -44,14 +44,15 @@ app.get('/', function (req, res) {
 });
 
 
-// app.post('/', function (req, res) {
-//     let sql = "INSERT INTO hasil ('Nama_Siswa','Masalah', 'Nilai_CF', 'Solusi') VALUES ('" + req.body.name + "','" + req.body.problem + "','" + req.body.value + "', '" + req.body.solution + "')";
-//     connection.query(sql, (error, results) => {
-//         if (error) throw error;
-//         console.log("1 record added...");
-//     });
-//     res.render('result.ejs', { title: "Hasil", heading: "Hasil" });
-// });
+app.post('/', function (req, res) {
+    // let sql = "INSERT INTO hasil ('Nama_Siswa','Masalah', 'Nilai_CF', 'Solusi') VALUES ('" + req.body.name + "','" + req.body.problem + "','" + req.body.value + "', '" + req.body.solution + "')";
+    // connection.query(sql, (error, results) => {
+    //     if (error) throw error;
+    //     console.log("1 record added...");
+    // });
+    const sql = req.body
+    res.render('hasil.ejs', { title: "Hasil", heading: "Hasil", hasil: sql });
+});
 
 // app.post('/', (req, res) => {
 //     connection.query('INSERT INTO hasil (Nama_Siswa, Masalah, Nilai_CF, Solusi) VALUES (?)', [('" + req.body.name + "', '" + req.body.problem + "', '" + req.body.value + "', '" + req.body.solution + "')], (error, results) => {
@@ -63,7 +64,7 @@ app.get('/', function (req, res) {
 
 app.get("/daftar-gejala", (req, res) => {
     connection.query("SELECT * FROM gejala", (error, results) => {
-        res.render("gejala.ejs", { title: "Daftar Gejala", heading: "Daftar Gejala", gejala: results });
+        res.render("daftar-gejala.ejs", { title: "Daftar Gejala", heading: "Daftar Gejala", gejala: results });
     });
 });
 
@@ -75,7 +76,7 @@ app.get("/daftar-diagnosa", (req, res) => {
 
 app.get("/daftar-masalah", (req, res) => {
     connection.query("SELECT * FROM masalah", (error, results) => {
-        res.render("masalah.ejs", { title: "Daftar Masalah", heading: "Daftar Masalah", masalah: results });
+        res.render("daftar-masalah.ejs", { title: "Daftar Masalah", heading: "Daftar Masalah", masalah: results });
     })
 });
 
