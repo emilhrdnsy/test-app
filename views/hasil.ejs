@@ -7,11 +7,11 @@
 <% include('./partials/crud.js') %>
 
 <script>
-    if (hasil) {
+    if (typeof obj.result !== 'undefined') {
         // group kemungkinan terdapat penyakit
         let groupKemungkinanPenyakit = getGroupPengetahuan(hasil.join(","));
 
-        for (let h = 0; h < '<% hasil %>'.length; h++) {
+        for (let h = 0; h < result.length; h++) {
             kemungkinanMasalah = getKemungkinanMasalah(sql[h]);
             for (let x = 0; x < kemungkinanMasalah.length[h]; x++) {
                 for (let i = 0; i < groupKemungkinanMasalah.length; i++) {
