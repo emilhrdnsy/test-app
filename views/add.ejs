@@ -23,7 +23,7 @@
                         <td scope="row">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="gejala<%- symptom.id_gejala %>"
-                                    name="gejala" value="gejala<%- symptom.id_gejala %>">
+                                    name="gejala" value="<%- symptom.nama_gejala %>">
                                 <label class="custom-control-label" for="gejala<%- symptom.id_gejala %>">
                                     <%= symptom.nama_gejala %>
                                 </label>
@@ -36,6 +36,5 @@
         </table>
     </div>
     <button type="submit" class="btn btn-primary diagnosis-btn"><%= button_value %></button>
-
 
 </form>

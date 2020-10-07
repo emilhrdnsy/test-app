@@ -2,7 +2,7 @@ const express = require('express');
 const mysql = require('mysql');
 const ejs = require('ejs');
 const expressLayouts = require('express-ejs-layouts')
-const ejsLint = require('ejs-lint');
+var bodyParser = require('body-parser');
 
 // init app
 const app = express();
@@ -18,12 +18,16 @@ app.use(expressLayouts);
 // to get value from form
 app.use(express.urlencoded({ extended: false }));
 
+//menggunakan library pada express
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 //create connection
 const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "diagnosis"
+    database: "diagnosisdb"
 });
 
 
@@ -45,13 +49,11 @@ app.get('/', function (req, res) {
 
 
 app.post('/', function (req, res) {
-    // let sql = "INSERT INTO hasil ('Nama_Siswa','Masalah', 'Nilai_CF', 'Solusi') VALUES ('" + req.body.name + "','" + req.body.problem + "','" + req.body.value + "', '" + req.body.solution + "')";
-    // connection.query(sql, (error, results) => {
-    //     if (error) throw error;
-    //     console.log("1 record added...");
-    // });
-    const sql = req.body
+
+    const sql = req.body.gejala
+
     res.render('hasil.ejs', { title: "Hasil", heading: "Hasil", hasil: sql });
+
 });
 
 // app.post('/', (req, res) => {

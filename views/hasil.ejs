@@ -4,89 +4,100 @@
 </h3>
 <br>
 
-<%= hasil.gejala %>
+<% include('./partials/crud.js') %>
 
-<% - include('./partials/crud.js') %>
 <script>
-    let groupKemungkinanMasalah = getGroupPengetahuan.join();
+    if (hasil) {
+        // group kemungkinan terdapat penyakit
+        let groupKemungkinanPenyakit = getGroupPengetahuan(hasil.join(","));
 
-    // menampilkan kode gejala yang di pilih
-    // let sql =
-
-    if (sql) {
-        for (let h = 0; h < sql.length; h++) {
+        for (let h = 0; h < '<% hasil %>'.length; h++) {
             kemungkinanMasalah = getKemungkinanMasalah(sql[h]);
-            for (let x = 0; x < count(kemungkinanMasalah[h]); x++) {
-                for (let i = 0; i < count(groupKemungkinanMasalah); i++) {
+            for (let x = 0; x < kemungkinanMasalah.length[h]; x++) {
+                for (let i = 0; i < groupKemungkinanMasalah.length; i++) {
                     let namaMasalah = groupKemungkinanMasalah[i]['nama_masalah'];
                     if (kemungkinanMasalah[h][x]['nama_masalah'] == namaMasalah) {
-                        // list di kemungkinan dari gejala
-                        let listIdKemungkinan = kemungkinanMasalah[h][x]['id_pengetahuan'];
+                        // list kemungkinan dari gejala
+                        let listIdKemungkinan = [[namaMasalah], []]
+                        listIdKemungkinan = kemungkinanMasalah[[h, x, 'id_pengetahuan']];
                     }
                 }
             }
         }
 
-        let id_Masalah_terbesar = '';
-        let nama_Masalah_terbesar = '';
+        let id_masalah_terbesar = '';
+        let nama_masalah_terbesar = '';
 
+        // list masalah kemungkinan
+        for (let h = 0; h < groupKemungkinanMasalah.length; h++) {
+            namaMasalah = groupKemungkinanMasalah[h]['nama_Masalah'];
+            document.write("<br/>Proses Masalah " + h + "." + namaMasalah + "<br/>==============<br/>");
 
+            // list Masalah kemungkinan dari gejala
+            for (let x = 0; x < listIdKemungkinan[namaMasalah].length; x++) {
+                let daftarKemungkinanMasalah = getListMasalah(listIdKemungkinan[namaMasalah][x]);
 
-        if (listIdKemungkinan == 1) {
-            document.write(`Jumlah Gejala =  ${listIdKemungkinan[namaMasalah]}<br/>`);
+                document.write("<br/>proses " + x + "<br/>------------------------------------<br/>");
 
-            // bila list kemungkinan terdapat 1
-            let mb = daftarKemungkinanMasalah[i]['mb'];
-            let md = daftarKemungkinanMasalah[i]['md'];
-            let cf = mb - md;
-            let daftar_cf[namaMasalah][] = cf;
+                for (let i = 0; i < daftarKemungkinanPenyakit.length; i++) {
 
-            // echo "<br/>proses 1<br/>------------------------<br/>";
-            // echo "mb = ".$mb."<br/>";
-            // echo "md = ".$md."<br/>";
-            // echo "cf = mb - md = ".$mb." - ".$md." = ".$cf."<br/><br/><br/>";
+                    if (listIdKemungkinan == 1) {
+                        document.write('<br>Jumlah Gejala = ' + listIdKemungkinan[namaMasalah] + '<br/>');
+                        // bila list kemungkinan terdapat 1
+                        let mb = daftarKemungkinanMasalah[i]['mb'];
+                        let md = daftarKemungkinanMasalah[i]['md'];
+                        let cf = mb - md;
+                        let daftar_cf = [[namaMasalah], []];
+                        daftar_cf = cf;
 
-            // end bila list kemungkinan terdapat 1
-        } else {
-            // list kemungkinanan lebih dari satu
-            if (let x == 0) {
-                document.write(`Jumlah Gejala =  ${listIdKemungkinan[namaMasalah]}<br/>`);
-                // record md dan mb sebelumnya
-                mblama = daftarKemungkinanMasalah[i]['mb'];
-                mdlama = daftarKemungkinanMasalah[i]['md'];
+                        document.write("<br/>proses 1<br/>------------------------<br/>")
+                        document.write("mb = " + mb + "<br/>");
+                        document.write("md = " + md + "<br/>");
+                        document.write("cf = mb - md = " + mb + " - " + md + " = " + cf + "<br/><br/><br/>");
 
-                mb = daftarKemungkinanMasalah[$i]['mb'];
-                md = daftarKemungkinanMasalah[$i]['md'];
+                        // end bila list kemungkinan terdapat 1
+                    } else {
+                        // list kemungkinanan lebih dari satu
+                        if (x == 0) {
+                            document.write(`Jumlah Gejala =  ${listIdKemungkinan[namaMasalah]} <br/>`);
+                            // record md dan mb sebelumnya
+                            mblama = daftarKemungkinanMasalah[i]['mb'];
+                            mdlama = daftarKemungkinanMasalah[i]['md'];
 
-                // echo "<br/>";
-                // echo "mbbaru = ".$mb."<br/>";
-                // echo "mdbaru = ".$md."<br/>";
-                let cf = mb - md;
-                // echo "cf = mb - md = ".$mb." - ".$md." = ".$cf."<br/><br/><br/>";
+                            mb = daftarKemungkinanMasalah[i]['mb'];
+                            md = daftarKemungkinanMasalah[i]['md'];
 
-                let daftar_cf[namaMasalah][] = cf;
+                            document.write("<br/>");
+                            document.write("mbbaru = " + mb + "<br/>");
+                            document.write("mdbaru = " + md + "<br/>");
+                            let cf = mb - md;
+                            document.write("cf = mb - md = " + mb + " - " + md + " = " + cf + "<br/><br/><br/>");
+
+                            daftar_cf[[namaMasalah], []] = cf;
+                        } else {
+                            let mbbaru = daftarKemungkinanMasalah[i]['mb'];
+                            let mdbaru = daftarKemungkinanMasalah[i]['md'];
+                            document.write("mbbaru = " + mbbaru + "<br/>");
+                            document.write("mdbaru = " + mdbaru + "<br/>");
+                            mbsementara = mblama + (mbbaru * (1 - mblama));
+                            mdsementara = mdlama + (mdbaru * (1 - mdlama));
+                            document.write(`mbsementara = mblama + (mbbaru * (1 - mblama)) = mblama + (mbbaru * (1 - mblama)) = " ${mbsementara}"<br/>`);
+                            document.write(`mdsementara = mdlama + (mdbaru * (1 - mdlama)) = mdlama + (mdbaru * (1 - mdlama)) = " ${mdsementara}"<br/>`);
+
+                            mb = mbsementara;
+                            md = mdsementara;
+                            cf = mb - md;
+                            document.write("cf = mblama - mdlama = " + mb + " - " + md + " = " + cf + "<br/><br/><br/>");
+                            daftar_cf[[namaMasalah], []] = cf;
+                        }
+                        // end list kemungkinanan lebih dari satu
+
+                        document.write("<br/>======================================<br/>");
+                        document.write(daftar_cf, groupKemungkinanMasalah);
+                        document.write(daftar_cf, groupKemungkinanMasalah);
+                    }
+                }
             }
-            else {
-                let mbbaru = daftarKemungkinanMasalah[i]['mb'];
-                let mdbaru = daftarKemungkinanMasalah[i]['md'];
-                // echo "mbbaru = ".$mbbaru."<br/>";
-                // echo "mdbaru = ".$mdbaru."<br/>";
-                mbsementara = mblama + (mbbaru * (1 - mblama));
-                mdsementara = mdlama + (mdbaru * (1 - mdlama));
-                // echo "mbsementara = mblama + (mbbaru * (1 - mblama)) = $mblama + ($mbbaru * (1 - $mblama)) = ".$mbsementara."<br/>";
-                // echo "mdsementara = mdlama + (mdbaru * (1 - mdlama)) = $mdlama + ($mdbaru * (1 - $mdlama)) = ".$mdsementara."<br/>";
-
-                mb = mbsementara;
-                md = mdsementara;
-                cf = mb - md;
-                // echo "cf = mblama - mdlama = ".$mb." - ".$md." = ".$cf."<br/><br/><br/>";
-                daftar_cf[namaMasalah][] = cf;;
-            }
-            // end list kemungkinanan lebih dari satu
-
-            // echo "<br/>======================================<br/>";
-            hasilCFTertinggi(daftar_cf, groupKemungkinanMasalah);
-            hasilAkhir(daftar_cf, groupKemungkinanMasalah);
-
         }
+    }
 </script>
