@@ -3,15 +3,17 @@
     <center><%= heading %></center>
 </h3>
 <br>
+<br>
+<h5><%- subheading %></h5>
 
+<%- sql.join('<br>') %>
 <% include('./partials/crud.js') %>
-
 <script>
-    if (typeof obj.result !== 'undefined') {
-        // group kemungkinan terdapat penyakit
-        let groupKemungkinanPenyakit = getGroupPengetahuan(hasil.join(","));
+    // group kemungkinan terdapat masalah
+    let groupKemungkinanPenyakit = getGroupPengetahuan(sql.join(","));
 
-        for (let h = 0; h < result.length; h++) {
+    if (sql) {
+        for (let h = 0; h < sql.length; h++) {
             kemungkinanMasalah = getKemungkinanMasalah(sql[h]);
             for (let x = 0; x < kemungkinanMasalah.length[h]; x++) {
                 for (let i = 0; i < groupKemungkinanMasalah.length; i++) {
@@ -39,7 +41,7 @@
 
                 document.write("<br/>proses " + x + "<br/>------------------------------------<br/>");
 
-                for (let i = 0; i < daftarKemungkinanPenyakit.length; i++) {
+                for (let i = 0; i < daftarKemungkinanMasalah.length; i++) {
 
                     if (listIdKemungkinan == 1) {
                         document.write('<br>Jumlah Gejala = ' + listIdKemungkinan[namaMasalah] + '<br/>');

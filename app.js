@@ -19,7 +19,7 @@ app.use(expressLayouts);
 app.use(express.urlencoded({ extended: false }));
 
 //menggunakan library pada express
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 //create connection
@@ -49,11 +49,8 @@ app.get('/', function (req, res) {
 
 
 app.post('/', function (req, res) {
-
-    const sql = req.body.gejala
-
-    res.render('hasil.ejs', { title: "Hasil", heading: "Hasil", hasil: sql });
-
+    const { gejala } = req.body
+    res.render('hasil.ejs', { title: "Hasil", heading: "Hasil", subheading: "Gejala yang dipilih:", sql: gejala });
 });
 
 // app.post('/', (req, res) => {
